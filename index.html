@@ -3,20 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SiteWOF — Website Audit Tool</title>
+    <title>SiteWOF - Website Audit Tool</title>
     <style>
-        :root {
-            --bg: #f9fafb;
-            --card: #ffffff;
-            --text: #1f2937;
-            --muted: #6b7280;
-            --border: #e5e7eb;
-            --green: #10b981;
-            --green-dark: #059669;
-            --radius: 12px;
-            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -25,8 +13,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background: #f9fafb;
+            color: #1f2937;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
@@ -43,35 +31,42 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            text-align: center;
             margin-bottom: 32px;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--green);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+        .logo-inner {
+            display: inline-block;
+            vertical-align: middle;
         }
 
-        .logo-icon::after {
-            content: "✓";
+        .logo-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 40px;
+            height: 40px;
+            background: #10b981;
+            border-radius: 10px;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .logo-icon span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             color: white;
             font-size: 22px;
             font-weight: 700;
         }
 
         .logo-text {
+            display: inline-block;
+            vertical-align: middle;
             font-size: 22px;
             font-weight: 700;
-            color: var(--text);
+            color: #1f2937;
             letter-spacing: -0.3px;
         }
 
@@ -85,7 +80,7 @@
 
         .subtitle {
             font-size: 18px;
-            color: var(--muted);
+            color: #6b7280;
             max-width: 480px;
             margin: 0 auto;
         }
@@ -98,25 +93,25 @@
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.15s ease;
             border: none;
+            transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
         }
 
         .btn-primary {
-            background: var(--green);
+            background: #10b981;
             color: white;
         }
 
         .btn-primary:hover {
-            background: var(--green-dark);
+            background: #059669;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
         .btn-outline {
-            background: var(--card);
-            color: var(--text);
-            border: 1.5px solid var(--border);
+            background: #ffffff;
+            color: #1f2937;
+            border: 1.5px solid #e5e7eb;
         }
 
         .btn-outline:hover {
@@ -130,19 +125,20 @@
         }
 
         .hero-actions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
+            text-align: center;
             margin-top: 28px;
         }
 
+        .hero-actions .btn {
+            margin: 6px;
+        }
+
         .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
             padding: 28px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
         }
 
         .section {
@@ -158,24 +154,26 @@
         }
 
         .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            text-align: center;
+            font-size: 0;
         }
 
         .step {
+            display: inline-block;
+            vertical-align: top;
+            width: 30%;
             text-align: center;
+            margin: 0 1.5%;
+            font-size: 16px;
         }
 
         .step-number {
             width: 44px;
             height: 44px;
             background: #ecfdf5;
-            color: var(--green-dark);
+            color: #059669;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            line-height: 44px;
             font-weight: 700;
             font-size: 18px;
             margin: 0 auto 14px;
@@ -189,17 +187,24 @@
 
         .step p {
             font-size: 14px;
-            color: var(--muted);
+            color: #6b7280;
         }
 
         .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            text-align: center;
             margin-top: 20px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 0;
+        }
+
+        .pricing-card-wrapper {
+            display: inline-block;
+            vertical-align: top;
+            width: 48%;
+            margin: 0 1%;
+            font-size: 16px;
         }
 
         .pricing-card {
@@ -208,7 +213,7 @@
         }
 
         .pricing-card.featured {
-            border: 2px solid var(--green);
+            border: 2px solid #10b981;
         }
 
         .badge {
@@ -216,12 +221,13 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--green);
+            background: #10b981;
             color: white;
             padding: 4px 14px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .price {
@@ -234,58 +240,70 @@
         .price span {
             font-size: 16px;
             font-weight: 500;
-            color: var(--muted);
+            color: #6b7280;
+        }
+
+        .pricing-desc {
+            color: #6b7280;
+            margin-bottom: 16px;
         }
 
         .features {
             list-style: none;
             text-align: left;
             margin: 20px 0;
+            padding: 0;
         }
 
         .features li {
             padding: 6px 0;
             font-size: 14px;
-            color: var(--muted);
+            color: #6b7280;
         }
 
-        .features li::before {
-            content: "✓ ";
-            color: var(--green);
+        .check-green {
+            color: #10b981;
             font-weight: 700;
+            margin-right: 4px;
+        }
+
+        .btn-full {
+            width: 100%;
         }
 
         .report-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            list-style: none;
+            text-align: center;
             margin-top: 20px;
+            font-size: 0;
         }
 
         .report-list li {
+            display: inline-block;
             background: #f9fafb;
             padding: 12px 16px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
+            margin: 6px 1%;
+            width: 46%;
+            text-align: left;
         }
 
-        .report-list li::before {
-            content: "📋 ";
+        .report-icon {
+            margin-right: 6px;
         }
 
         footer {
             text-align: center;
             margin-top: 80px;
             padding-top: 32px;
-            border-top: 1px solid var(--border);
-            color: var(--muted);
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
             font-size: 13px;
         }
 
         footer a {
-            color: var(--text);
+            color: #1f2937;
             text-decoration: none;
             font-weight: 500;
         }
@@ -294,9 +312,34 @@
             text-decoration: underline;
         }
 
+        footer p {
+            margin-top: 6px;
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
         @media (max-width: 640px) {
-            .steps, .pricing-grid, .report-list {
-                grid-template-columns: 1fr;
+            .step {
+                display: block;
+                width: auto;
+                margin: 0 0 24px 0;
+            }
+
+            .pricing-card-wrapper {
+                display: block;
+                width: auto;
+                margin: 0 0 20px 0;
+            }
+
+            .report-list li {
+                display: block;
+                width: auto;
+                margin: 6px 0;
             }
 
             h1 {
@@ -315,16 +358,21 @@
 
     <header>
         <div class="logo">
-            <div class="logo-icon"></div>
-            <span class="logo-text">SiteWOF</span>
+            <div class="logo-inner">
+                <div class="logo-icon">
+                    <span>&#10003;</span>
+                </div>
+                <span class="logo-text">SiteWOF</span>
+            </div>
         </div>
         <h1>Audit any website in seconds</h1>
         <p class="subtitle">
-            Get a professional report with broken links, performance scores, compliance checks, and a pass/fail verdict — all in clean Markdown.
+            Get a professional report with a pass/fail verdict.
         </p>
+		
         <div class="hero-actions">
-            <a href="#" class="btn btn-primary btn-lg">Try Free Audit →</a>
-            <a href="#pricing" class="btn btn-outline btn-lg">Get Full Access — $10</a>
+            <a href="page2.html" class="btn btn-primary btn-lg">Try Free Audit &rarr;</a>
+            <a href="https://buy.stripe.com/test_eVqbJ32sjepk0YM9R5gEg01" class="btn btn-outline btn-lg">Purchase Audit $5</a>
         </div>
     </header>
 
@@ -352,48 +400,54 @@
     <div class="section">
         <h2 class="section-title">What's inside the report</h2>
         <ul class="report-list">
-            <li>Executive Summary</li>
-            <li>Critical Issues Found</li>
-            <li>PageSpeed Performance</li>
-            <li>Compliance Check</li>
-            <li>Recommendations</li>
-            <li>Positive Findings</li>
-            <li>Site Type Classification</li>
-            <li>Pass / Fail Verdict</li>
+            <li><span class="report-icon">&#128203;</span> Executive Summary</li>
+            <li><span class="report-icon">&#128203;</span> Critical Issues Found</li>
+            <li><span class="report-icon">&#128203;</span> PageSpeed Performance</li>
+            <li><span class="report-icon">&#128203;</span> Compliance Check</li>
+            <li><span class="report-icon">&#128203;</span> How to fix</li>
+            <li><span class="report-icon">&#128203;</span> Positive Findings</li>
+            <li><span class="report-icon">&#128203;</span> Recommendations</li>
+            <li><span class="report-icon">&#128203;</span> Pass / Fail Verdict</li>
         </ul>
     </div>
 
     <div class="section" id="pricing">
         <h2 class="section-title">Simple pricing</h2>
         <div class="pricing-grid">
-            <div class="card pricing-card">
-                <div class="price">$0</div>
-                <p style="color: var(--muted); margin-bottom: 16px;">One free audit, no catch.</p>
-                <a href="#" class="btn btn-outline" style="width: 100%;">Start Free Audit</a>
+
+            <div class="pricing-card-wrapper">
+                <div class="card pricing-card">
+                    <div class="price">$0</div>
+                    <p class="pricing-desc">One free audit, no catch.</p>
+                    <a href="page2.html" class="btn btn-outline btn-full">Start Free Audit</a>
+                </div>
             </div>
-            <div class="card pricing-card featured">
-                <div class="badge">Best value</div>
-                <div class="price">$10 <span>NZD</span></div>
-                <p style="color: var(--muted); margin-bottom: 16px;">1 month unlimited access.</p>
-                <ul class="features">
-                    <li>Unlimited website audits</li>
-                    <li>Professional Markdown reports</li>
-                    <li>Share with your team</li>
-                    <li>No account needed</li>
-                </ul>
-                <a href="https://buy.stripe.com/test_eVqbJ32sjepk0YM9R5gEg01" class="btn btn-primary" style="width: 100%;">Get Full Access →</a>
-            </div>
+
+            <div class="pricing-card-wrapper">
+                <div class="card pricing-card featured">
+                    <div class="badge">Website WOF Check</div>
+                    <div class="price">$5 <span>NZD</span></div>
+                    <p class="pricing-desc">One time use code</p>
+                    <ul class="features">
+                        <li><span class="check-green">&#10003;</span> Website Audit</li>
+                        <li><span class="check-green">&#10003;</span> Professional report</li>
+                        <li><span class="check-green">&#10003;</span> No account needed</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/test_eVqbJ32sjepk0YM9R5gEg01" class="btn btn-primary btn-full">Get Access Code &rarr;</a>
+                </div>
+            </div>		
+			
         </div>
-        <p style="text-align: center; margin-top: 20px; font-size: 14px; color: var(--muted);">
-            Need longer? <strong>3 months for $25</strong> or <strong>12 months for $80</strong> — contact us.
+        <p class="pricing-note">
+            Need more? <strong>1 month unlimited use for $25</strong>. contact us.
         </p>
     </div>
 
     <footer>
-        <p>© 2026 SiteWOF. Built for webmasters, devs, and the curious.</p>
-        <p style="margin-top: 6px;">
-            <a href="mailto:hello@sitewof.co.nz">Contact</a> · 
-            <a href="#">Privacy</a> · 
+        <p>&copy; 2026 SiteWOF. Built for webmasters, devs, and the curious.</p>
+        <p>
+            <a href="mailto:hello@sitewof.co.nz">Contact</a> &middot; 
+            <a href="#">Privacy</a> &middot; 
             <a href="#">Terms</a>
         </p>
     </footer>
