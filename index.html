@@ -468,7 +468,7 @@ document.getElementById('freeCodeForm').addEventListener('submit', async functio
     
     try {
         // Check if email already claimed
-        const checkResponse = await fetch(`https://proud-bar-a0f8.rikki-d-scott.workers.dev/free-${encodeURIComponent(email)}`, {
+        const checkResponse = await fetch("https://proud-bar-a0f8.rikki-d-scott.workers.dev/free-${encodeURIComponent(email)}", {
             headers: { 'Authorization': 'sitewof-secret-xyz789' }
         });
         
@@ -489,7 +489,7 @@ document.getElementById('freeCodeForm').addEventListener('submit', async functio
         const code = `SW-${part1}-${part2}`;
         
         // Store email and code in KV
-        await fetch(`https://proud-bar-a0f8.rikki-d-scott.workers.dev/`, {
+        await fetch("https://proud-bar-a0f8.rikki-d-scott.workers.dev/", {
             method: 'POST',
             headers: { 
                 'Authorization': 'sitewof-secret-xyz789',
