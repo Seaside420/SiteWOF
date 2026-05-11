@@ -468,7 +468,7 @@ document.getElementById('freeCodeForm').addEventListener('submit', async functio
     
     try {
         // Check if email already claimed
-        const checkResponse = await fetch(`https://proud-bar-a0f8.rikki-d-scott.workers.dev/free-${encodeURIComponent(email)}`, {
+        const checkResponse = await fetch('https://proud-bar-a0f8.rikki-d-scott.workers.dev/free-' + encodeURIComponent(email), {
             headers: { 'Authorization': 'sitewof-secret-xyz789' }
         });
         
@@ -476,7 +476,7 @@ document.getElementById('freeCodeForm').addEventListener('submit', async functio
         
         if (checkData.found) {
             resultDiv.style.display = 'block';
-            resultDiv.innerHTML = '<p style="color: #f59e0b;">?? This email has already claimed a free audit.</p><a href="index.html" class="btn btn-outline" style="margin-top: 8px;">Get Unlimited Access ?</a>';
+            resultDiv.innerHTML = '<p style="color: #f59e0b;">This email has already claimed a free audit.</p><a href="index.html" class="btn btn-outline" style="margin-top: 8px;">Get Unlimited Access</a>';
             button.textContent = 'Send Me a Free Code';
             button.disabled = false;
             return;
@@ -484,29 +484,33 @@ document.getElementById('freeCodeForm').addEventListener('submit', async functio
         
         // Generate unique code
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        const part1 = Array.from({length: 4}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-        const part2 = Array.from({length: 4}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-        const code = `SW-${part1}-${part2}`;
+        var part1 = '';
+        var part2 = '';
+        for (var i = 0; i < 4; i++) {
+            part1 += chars[Math.floor(Math.random() * chars.length)];
+            part2 += chars[Math.floor(Math.random() * chars.length)];
+        }
+        const code = 'SW-' + part1 + '-' + part2;
         
         // Store email and code in KV
-        await fetch(`https://proud-bar-a0f8.rikki-d-scott.workers.dev/`, {
+        await fetch('https://proud-bar-a0f8.rikki-d-scott.workers.dev/', {
             method: 'POST',
             headers: { 
                 'Authorization': 'sitewof-secret-xyz789',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
-                key: `free-${email}`,
+                key: 'free-' + email,
                 code: code
             })
         });
         
         resultDiv.style.display = 'block';
-        resultDiv.innerHTML = `<div style="background: #ecfdf5; padding: 16px; border-radius: 8px; border: 1px solid #10b981;">
-            <p style="color: #059669; font-weight: 600; margin-bottom: 8px;">? Your free audit code:</p>
-            <p style="font-family: monospace; font-size: 22px; font-weight: 700; letter-spacing: 1px;">${code}</p>
-            <a href="page2.html" class="btn btn-primary" style="margin-top: 10px;">Run Your Audit ?</a>
-        </div>`;
+        resultDiv.innerHTML = '<div style="background: #ecfdf5; padding: 16px; border-radius: 8px; border: 1px solid #10b981;">' +
+            '<p style="color: #059669; font-weight: 600; margin-bottom: 8px;">Your free audit code:</p>' +
+            '<p style="font-family: monospace; font-size: 22px; font-weight: 700; letter-spacing: 1px;">' + code + '</p>' +
+            '<a href="page2.html" class="btn btn-primary" style="margin-top: 10px;">Run Your Audit</a>' +
+        '</div>';
         
     } catch (error) {
         resultDiv.style.display = 'block';
