@@ -469,14 +469,14 @@ document.getElementById('freeCodeForm').addEventListener('submit', async functio
     try {
         // Check if email already claimed
         const checkResponse = await fetch(`https://proud-bar-a0f8.rikki-d-scott.workers.dev/free-${encodeURIComponent(email)}`, {
-            headers: { 'Authorization': 'sitewof-secret-xyz789' }
+            headers: { `Authorization`: `sitewof-secret-xyz789` }
         });
         
         const checkData = await checkResponse.json();
         
         if (checkData.found) {
             resultDiv.style.display = 'block';
-            resultDiv.innerHTML = '<p style="color: #f59e0b;">?? This email has already claimed a free audit.</p><a href="#pricing" class="btn btn-outline" style="margin-top: 8px;">Get Unlimited Access ?</a>';
+            resultDiv.innerHTML = `<p style="color: #f59e0b;">?? This email has already claimed a free audit.</p><a href="#pricing" class="btn btn-outline" style="margin-top: 8px;">Get Unlimited Access ?</a>`;
             button.textContent = 'Send Me a Free Code';
             button.disabled = false;
             return;
