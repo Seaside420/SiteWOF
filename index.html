@@ -486,7 +486,7 @@ document.getElementById('freeCodeForm').addEventListener('submit', async functio
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         const part1 = Array.from({length: 4}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
         const part2 = Array.from({length: 4}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-        const code = `SW-${part1}-${part2}`;
+        const code = 'SW-${part1}-${part2}';
         
         // Store email and code in KV
         await fetch(`https://proud-bar-a0f8.rikki-d-scott.workers.dev/`, {
@@ -496,7 +496,7 @@ document.getElementById('freeCodeForm').addEventListener('submit', async functio
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
-                key: `free-${email}`,
+                key: 'free-${email}',
                 code: code
             })
         });
