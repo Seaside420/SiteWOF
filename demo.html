@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Audit Report — SiteWOF</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f9fafb;
+            color: #1f2937;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 760px; margin: 0 auto; padding: 48px 24px; }
+
+        .logo { text-align: center; margin-bottom: 32px; }
+        .logo-icon {
+            display: inline-block; width: 40px; height: 40px; background: #10b981;
+            border-radius: 10px; position: relative; vertical-align: middle; margin-right: 10px;
+        }
+        .logo-icon span {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: white; font-size: 22px; font-weight: 700;
+        }
+        .logo-text {
+            display: inline-block; vertical-align: middle; font-size: 22px;
+            font-weight: 700; color: #1f2937; letter-spacing: -0.3px;
+        }
+
+        .badge {
+            display: inline-block; background: #ecfdf5; color: #059669; padding: 4px 12px;
+            border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px;
+        }
+
+        h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; color: #111827; text-align: center; }
+        .subtitle { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 32px; }
+
+        .report-card {
+            background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;
+            padding: 36px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .report-card h2 {
+            font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 10px;
+            color: #111827; border-bottom: 1px solid #f3f4f6; padding-bottom: 6px;
+        }
+        .report-card h2:first-of-type { margin-top: 0; }
+
+        .report-card p { font-size: 15px; color: #4b5563; margin-bottom: 10px; }
+        .report-card ul { padding-left: 20px; margin-bottom: 12px; }
+        .report-card li { font-size: 14px; color: #4b5563; margin-bottom: 4px; }
+
+        .metric-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+            margin: 16px 0;
+        }
+        .metric-box {
+            background: #f9fafb; border-radius: 8px; padding: 14px; text-align: center;
+        }
+        .metric-value { font-size: 22px; font-weight: 700; color: #111827; }
+        .metric-label { font-size: 12px; color: #6b7280; }
+
+        .pass-box {
+            border: 2px solid #10b981; border-radius: 8px; padding: 16px;
+            background: #ecfdf5; text-align: center; margin-top: 24px;
+        }
+        .pass-box .verdict { font-size: 20px; font-weight: 700; color: #059669; }
+
+        .check-pass { color: #10b981; font-weight: 700; }
+        .check-fail { color: #ef4444; font-weight: 700; }
+
+        .cta { text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb; }
+        .btn {
+            display: inline-block; padding: 12px 28px; border-radius: 8px; font-size: 16px;
+            font-weight: 600; text-decoration: none; transition: all 0.15s ease;
+        }
+        .btn-primary { background: #10b981; color: white; }
+        .btn-primary:hover { background: #059669; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(16,185,129,0.3); }
+        .btn-outline { background: #ffffff; color: #1f2937; border: 1.5px solid #e5e7eb; margin-left: 10px; }
+        .btn-outline:hover { border-color: #d1d5db; }
+
+        footer { text-align: center; margin-top: 40px; color: #9ca3af; font-size: 13px; }
+        footer a { color: #6b7280; text-decoration: none; }
+
+        @media (max-width: 640px) {
+            .metric-grid { grid-template-columns: repeat(2, 1fr); }
+            .container { padding: 24px 16px; }
+            .report-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <div class="logo-icon"><span>&#10003;</span></div>
+        <span class="logo-text">SiteWOF</span>
+    </div>
+
+    <div style="text-align: center;">
+        <span class="badge">📋 Sample Report</span>
+    </div>
+
+    <h1>Site WOF Audit Report</h1>
+    <p class="subtitle"><strong>URL:</strong> sitewof.com &nbsp;|&nbsp; <strong>Site Type:</strong> Ecommerce &nbsp;|&nbsp; <strong>Date:</strong> 2026-05-12</p>
+
+    <div class="report-card">
+
+        <h2>1. Executive Summary</h2>
+        <p>This ecommerce site is in excellent technical shape. It achieves a perfect PageSpeed score of 100/100 with outstanding Core Web Vitals, serves over HTTPS, and includes privacy-critical pages. No critical issues were found. Minor compliance considerations exist around cookie consent, but performance and link structure are pristine.</p>
+
+        <h2>2. Critical Issues</h2>
+        <p>✅ No critical issues detected.</p>
+
+        <h2>3. Performance</h2>
+        <p><strong>Mobile PageSpeed Score:</strong> 100/100 — Exceptional</p>
+        <div class="metric-grid">
+            <div class="metric-box">
+                <div class="metric-value">1.0s</div>
+                <div class="metric-label">LCP</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-value">0</div>
+                <div class="metric-label">CLS</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-value">0ms</div>
+                <div class="metric-label">TBT</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-value">0.8s</div>
+                <div class="metric-label">FCP</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-value">1.0s</div>
+                <div class="metric-label">TTI</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-value">1.1s</div>
+                <div class="metric-label">Speed Index</div>
+            </div>
+        </div>
+
+        <h2>4. Recommendations</h2>
+        <ul>
+            <li><strong>Add cookie consent banner:</strong> Stripe payment links may set essential cookies. Consider a lightweight consent solution for broader GDPR compliance.</li>
+            <li><strong>Strengthen trust signals:</strong> Display security badges and payment icons prominently.</li>
+            <li><strong>Monitor external links:</strong> Verify Stripe payment links remain active and correct.</li>
+        </ul>
+
+        <h2>5. Positive Findings</h2>
+        <ul>
+            <li><strong>Flawless performance:</strong> Perfect 100/100 PageSpeed score with sub-second LCP and zero layout shift.</li>
+            <li><strong>HTTPS enabled:</strong> All traffic encrypted.</li>
+            <li><strong>Privacy Policy present:</strong> Legal coverage for payment data.</li>
+            <li><strong>No broken links:</strong> All internal and external links functional.</li>
+        </ul>
+
+        <h2>6. Compliance Check</h2>
+        <p><span class="check-pass">✅ HTTPS:</span> Yes</p>
+        <p><span class="check-pass">✅ Privacy Policy:</span> Detected</p>
+        <p><span class="check-fail">❌ Cookie Consent:</span> Not detected</p>
+        <p style="font-size: 13px; color: #9ca3af;">Note: No analytics scripts detected. Cookie banner may not be required if only strictly necessary cookies are used. Recommended to review actual cookie usage.</p>
+
+        <div class="pass-box">
+            <div class="verdict">✅ PASS</div>
+            <p style="color: #059669; margin-top: 4px;">No critical issues found.</p>
+        </div>
+
+    </div>
+
+    <div class="cta">
+        <a href="page2.html" class="btn btn-primary">Run Your Free Audit →</a>
+        <a href="index.html" class="btn btn-outline">← Back to SiteWOF</a>
+    </div>
+
+    <footer>
+        <p>This is a sample report. Your results will vary based on the site audited.</p>
+        <p><a href="index.html">SiteWOF</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+    </footer>
+
+</div>
+
+</body>
+</html>
